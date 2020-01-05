@@ -16,6 +16,7 @@ class Login extends React.Component {
     this.state={
       username:'',
       password:'',
+      showPopup: false,
       loggedIn
     }
 
@@ -38,6 +39,11 @@ class Login extends React.Component {
       })
     }
   }
+  // pop up fn
+  togglePopup() {  
+  this.setState({  
+       showPopup: !this.state.showPopup  
+  });  
   render() {
     if(this.state.loggedIn) {
       return <Redirect to="/admin"/>
@@ -54,6 +60,14 @@ class Login extends React.Component {
         </form>
         <div className='auth-signin'>
                 <button className="oauth">Sign in with NUSNET account</button>
+                ///// Popup --> direct to sign in --> authentication??
+                <div className='popup'>  
+                <div className='popup\_inner'>  
+                <h1>{this.props.text}</h1>  
+                <button onClick={this.props.closePopup}>close me</button>  
+                </div>  
+                </div> 
+                /////
         </div>
       </div>
     );
